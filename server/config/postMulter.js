@@ -100,19 +100,25 @@ const storage = multer.diskStorage({
     }
 });
 
-const fileFilter = (req, file, cb) => {
-    if (file.fieldname === "image" && !file.originalname.match(/\.(jpg|jpeg|png)$/)) {
-        return cb(new Error('Only image files are allowed!'), false);
-    }
-    if (file.fieldname === "document" && !file.originalname.match(/\.(pdf|doc|docx)$/)) {
-        return cb(new Error('Only document files are allowed!'), false);
-    }
-    if (file.fieldname === "video" && !file.originalname.match(/\.(mp4)$/)) {
-        return cb(new Error('Only video files are allowed!'), false);
-    }
-    cb(null, true);
-};
 
-const upload = multer({ storage: storage, fileFilter: fileFilter });
+
+// I AM NOT USING THIS TO CHECK MY POST'S IMAGE, DOCUMENT AND VIDEO FILES EXTENSION AND SIZE. I AM CHECKING IT ON MY UPLOADPOST.JS FILE
+
+
+// const fileFilter = (req, file, cb) => {
+//     if (file.fieldname === "image" && !file.originalname.match(/\.(jpg|jpeg|png)$/)) {
+//         return cb(new Error('Only image files are allowed!'), false);
+//     }
+//     if (file.fieldname === "document" && !file.originalname.match(/\.(pdf|doc|docx)$/)) {
+//         return cb(new Error('Only document files are allowed!'), false);
+//     }
+//     if (file.fieldname === "video" && !file.originalname.match(/\.(mp4)$/)) {
+//         return cb(new Error('Only video files are allowed!'), false);
+//     }
+//     cb(null, true);
+// };
+
+// const upload = multer({ storage: storage, fileFilter: fileFilter });
+const upload = multer({ storage: storage });
 
 export default upload;

@@ -47,7 +47,6 @@ const storage = multer.diskStorage({
 
   app.use("/collablearn/user", postRoutes);
 
-  // app.use("/collablearn/user", userRoutes);
 
 
 

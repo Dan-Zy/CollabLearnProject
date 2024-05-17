@@ -57,7 +57,6 @@ const postSchema = mongoose.Schema({
 
     content: {
         type: String,
-        maxlength: 500,
         required: true
     },
 
