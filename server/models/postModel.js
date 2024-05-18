@@ -109,7 +109,19 @@ const postSchema = mongoose.Schema({
         default: []
     },
 
-    visibilty: {
+    sharedPost: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Post",
+        default: null
+    },
+
+    originalAuthor: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        default: null
+    },
+
+    visibility: {
         type: String,
         enum: ['Public', 'Private'],
         default: "Public"   
