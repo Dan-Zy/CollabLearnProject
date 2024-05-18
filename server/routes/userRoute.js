@@ -2,7 +2,7 @@ import express from "express";
 import { registerUser, loginUser } from "../controllers/authController.js";
 import upload from "../config/multer.js";
 import { verifyToken } from "../middlewares/authorization.js";
-import { uploadProfilePicture } from "../controllers/upload.js";
+import { uploadProfilePicture } from "../controllers/uploadPfp.js";
 
 const router = express.Router();
 

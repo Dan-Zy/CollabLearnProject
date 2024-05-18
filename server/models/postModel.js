@@ -18,8 +18,12 @@ const commentSchema = mongoose.Schema({
 
     content: {
         type: String,
-        maxlength: 500,
         required: true
+    },
+
+    image: {
+        type: String,
+        default: ""
     },
 
     upvotes: {
@@ -87,7 +91,17 @@ const postSchema = mongoose.Schema({
         default: []
     },
 
-    comments: [commentSchema],
+    comments: [{
+        commentId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Comment",
+            required: true
+        },
+        content: {
+            type: String,
+            required: true
+        }
+    }],
 
     shares: {
         type: [mongoose.Schema.Types.ObjectId],
@@ -108,10 +122,12 @@ const postSchema = mongoose.Schema({
 
     updatedAt: {
         type: Date,
-        default: []
+        default: Date.now
     }
 
 });
 
-export const Post = mongoose.model("Post", postSchema, "posts");
-// const Comment = mongoose.model("Comment", commentSchema, "")
+const Post = mongoose.model("Post", postSchema, "posts");
+const Comment = mongoose.model("Comment", commentSchema, "comments");
+
+export {Post , Comment}
