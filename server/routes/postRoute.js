@@ -8,6 +8,7 @@ import {upvotePost, upvoteComment} from "../controllers/upvote.js";
 import { devotePost, devoteComment } from "../controllers/devote.js";
 import sharePost from "../controllers/sharePost.js";
 import editPost from "../controllers/editPost.js"
+import deletePost from "../controllers/deletePost.js"
 
 const router = express.Router();
 
@@ -23,6 +24,9 @@ router.put("/editPost/:postId", verifyToken , uploadP.fields([
     { name: 'image', maxCount: 1 },
     { name: 'document', maxCount: 1 },
     { name: 'video', maxCount: 1 }]), editPost);
+
+// Delete Post
+router.delete("/deletePost/:postId", verifyToken, deletePost);
 
 // Add Comment
 router.post("/addComment/:postId", verifyToken, upload.single("image"), addComment);
