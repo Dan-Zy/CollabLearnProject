@@ -7,8 +7,9 @@ import { addComment } from "../controllers/addComment.js";
 import {upvotePost, upvoteComment} from "../controllers/upvote.js";
 import { devotePost, devoteComment } from "../controllers/devote.js";
 import sharePost from "../controllers/sharePost.js";
-import editPost from "../controllers/editPost.js"
-import deletePost from "../controllers/deletePost.js"
+import editPost from "../controllers/editPost.js";
+import deletePost from "../controllers/deletePost.js";
+import editComment from "../controllers/editComment.js";
 
 const router = express.Router();
 
@@ -30,6 +31,10 @@ router.delete("/deletePost/:postId", verifyToken, deletePost);
 
 // Add Comment
 router.post("/addComment/:postId", verifyToken, upload.single("image"), addComment);
+
+// Edit Comment
+router.put("/editComment/:commentId", verifyToken, upload.single("image"), editComment);
+
 
 // Upvote Post
 router.post("/upvotePost/:postId", verifyToken, upvotePost);
