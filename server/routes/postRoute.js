@@ -10,6 +10,7 @@ import sharePost from "../controllers/sharePost.js";
 import editPost from "../controllers/editPost.js";
 import deletePost from "../controllers/deletePost.js";
 import editComment from "../controllers/editComment.js";
+import deleteComment from "../controllers/deleteComment.js";
 
 const router = express.Router();
 
@@ -29,11 +30,16 @@ router.put("/editPost/:postId", verifyToken , uploadP.fields([
 // Delete Post
 router.delete("/deletePost/:postId", verifyToken, deletePost);
 
+
+
 // Add Comment
 router.post("/addComment/:postId", verifyToken, upload.single("image"), addComment);
 
 // Edit Comment
 router.put("/editComment/:commentId", verifyToken, upload.single("image"), editComment);
+
+// Delete Comment
+router.delete("/deleteComment/:commentId", verifyToken, deleteComment)
 
 
 // Upvote Post
