@@ -2,19 +2,27 @@ import express from "express";
 import { verifyToken } from "../middlewares/authorization.js";
 import { uploadPost } from "../controllers/uploadPost.js";
 import upload from "../config/commentMulter.js";
+import uploadP from "../config/postMulter.js"
 import { addComment } from "../controllers/addComment.js";
 import {upvotePost, upvoteComment} from "../controllers/upvote.js";
 import { devotePost, devoteComment } from "../controllers/devote.js";
 import sharePost from "../controllers/sharePost.js";
+import editPost from "../controllers/editPost.js"
 
 const router = express.Router();
 
 // Upload Post
-router.post("/uploadPost", verifyToken, upload.fields([
+router.post("/uploadPost", verifyToken, uploadP.fields([
     { name: 'image', maxCount: 1 },
     { name: 'document', maxCount: 1 },
     { name: 'video', maxCount: 1 }
 ]), uploadPost);
+
+// Edit Post
+router.put("/editPost/:postId", verifyToken , uploadP.fields([
+    { name: 'image', maxCount: 1 },
+    { name: 'document', maxCount: 1 },
+    { name: 'video', maxCount: 1 }]), editPost);
 
 // Add Comment
 router.post("/addComment/:postId", verifyToken, upload.single("image"), addComment);
