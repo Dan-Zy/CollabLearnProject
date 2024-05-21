@@ -11,6 +11,7 @@ import editPost from "../controllers/editPost.js";
 import deletePost from "../controllers/deletePost.js";
 import editComment from "../controllers/editComment.js";
 import deleteComment from "../controllers/deleteComment.js";
+import { getPosts } from "../controllers/getPosts.js";
 
 const router = express.Router();
 
@@ -29,6 +30,9 @@ router.put("/editPost/:postId", verifyToken , uploadP.fields([
 
 // Delete Post
 router.delete("/deletePost/:postId", verifyToken, deletePost);
+
+// Get Post
+router.get("/getPosts", getPosts);
 
 
 
