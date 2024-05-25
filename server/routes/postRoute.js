@@ -22,7 +22,7 @@ router.post("/uploadPost", verifyToken, uploadP.fields([
     { name: 'video', maxCount: 1 }
 ]), uploadPost);
 
-// Edit Post
+// Edit Post with hassan
 router.put("/editPost/:postId", verifyToken , uploadP.fields([
     { name: 'image', maxCount: 1 },
     { name: 'document', maxCount: 1 },
